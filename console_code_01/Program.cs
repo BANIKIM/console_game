@@ -67,6 +67,7 @@ namespace console_code_01
         }
         static void Main(string[] args)
         {
+
             Program p = new Program();
             Game g = new Game();
             Player player = new Player();
