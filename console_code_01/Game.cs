@@ -12,7 +12,7 @@ namespace console_code_01
     {
 
         Random rand = new Random();
-
+        //강화의 달인 타이틀 이미지
         public void AA()
         {
             Console.WriteLine("                      ;@=                       ");
@@ -47,6 +47,7 @@ namespace console_code_01
             Console.WriteLine("                      :#####        #####~      ");
 
         }
+        //강화의 달인 메뉴 이미지
         public void AB(Player player)
         {
             Console.WriteLine("                      ;@=                       ");
@@ -95,12 +96,12 @@ namespace console_code_01
             SoundPlayer failure = new SoundPlayer("C:\\Users\\ajtwj\\source\\repos\\console_code_01\\console_code_01\\Music\\강화실패.wav");
             SoundPlayer atmosphere = new SoundPlayer("C:\\Users\\ajtwj\\source\\repos\\console_code_01\\console_code_01\\Music\\강화대기소리.wav");
 
-            //구매리스트 있는데 일단 칼만
+            //구매리스트
             Console.Clear();
             while (player.money > 0)
             {
                 AB(player);
-                if (player.money < 1000)
+                if (player.money < 1000)//1000원 이하의 금액을 가지고 있다면 강화의 달인을 나간다.
                 {
                     Console.WriteLine("너 칼 하나도 못사..");
                     Thread.Sleep(2000);
@@ -150,7 +151,7 @@ namespace console_code_01
                     break;
                 }
 
-                while (equipment != 0)
+                while (equipment != 0) // 장비를 구매했다면 강화를 실패하거나 팔때까지 진행
                 {
                     Console.Clear();
                     
@@ -176,12 +177,12 @@ namespace console_code_01
                     Console.WriteLine("                           |                                               |");
                     Console.WriteLine("                           |_______________________________________________|");
                     atmosphere.PlaySync();
-                    int a = rand.Next(1, 101);
+                    int a = rand.Next(1, 101);//100의 난수를 받음
                     input = int.Parse(Console.ReadLine());
 
                     if (input == 1)
                     {
-                        if (a < 100 / count)
+                        if (a < 100 / count) //1강은 99퍼센트 2강은 50퍼 3강은 33퍼식으로 확률이 내려감
                         {
                             Console.Clear();
                             success.PlaySync();
@@ -197,16 +198,16 @@ namespace console_code_01
                             break;
 
                         }
-                        count++;
+                        count++;//강화가 성공하면 카운터 변수에 1이 더 해지고 판매금액과 강화 성공 확률이 떨어짐
                     }
                     else
                     {
-                        Console.WriteLine($" {count} 강 판매");
-                        player.money += equipment * count;
+                        Console.WriteLine($" {count} 강 판매"); //강화 수치만금 돈을 많이 받음
+                        player.money += equipment * count;// 1강후 판매는 돈을 벌지 못함
                         count = 1;
                         break;
                     }
-                    if (player.money <= 0 && equipment == 0)
+                    if (player.money <= 0 && equipment == 0)//돈이 0이고 강화할 장비가 없다면 게임을 종료함
                     {
 
                         break;
@@ -223,15 +224,15 @@ namespace console_code_01
         public void horse_race(Player player)
         {
             SoundPlayer go = new SoundPlayer("C:\\Users\\ajtwj\\source\\repos\\console_code_01\\console_code_01\\Music\\go.wav");//선택
-            int h_1 = 0;
-            int h_2 = 0;
-            int h_3 = 0;
-            int h_4 = 0;
-            int h_num = 0;
-            int[] buff_num = new int[4];
-            float[] buff = new float[6] {-0.02f, -0.01f, 0.01f, 0.01f,0.02f,-0.02f };
+            int h_1 = 0;// 1번말의 배팅금액을 저장할 변수
+            int h_2 = 0;// 2번말의 배팅금액을 저장할 변수
+            int h_3 = 0;// 3번말의 배팅금액을 저장할 변수
+            int h_4 = 0;// 4번말의 배팅금액을 저장할 변수
+            int h_num = 0; // 몇번말에 돈을 걸었는지 확인 할 변수
+            int[] buff_num = new int[4]; // 말에게 속도 버프나 디버프를 줄 배열의 값
+            float[] buff = new float[6] {-0.02f, -0.01f, 0.01f, 0.01f,0.02f,-0.02f };//버프 디퍼브의 저장된 수치
             string[] buff_s = new string[6] { "먹이를 많이 먹었습니다.", "잘 먹지 못했습니다.", "잘 먹었습니다.", "잠을 잘 잤습니다.",
-            "잠을 많이 잣습니다.","잠을 자지 못했습니다."};
+            "잠을 많이 잣습니다.","잠을 자지 못했습니다."};//버프 디버프의 내역
             char char_input = ' ';
             int R = 0;
             
@@ -245,7 +246,7 @@ namespace console_code_01
                 {
                     buff_num[i] = rand.Next(0,6);
                 }
-                h_1 = rand.Next(1000,20000);
+                h_1 = rand.Next(1000, 20000);//초기 자금이 많이 드는 대신에 랜덤으로 말들에게 돈을 걸어서 추가로 돈을 더 벌 수 있음
                 h_2 = rand.Next(1000, 20000);
                 h_3 = rand.Next(1000, 20000);
                 h_4 = rand.Next(1000, 20000);
@@ -289,7 +290,7 @@ namespace console_code_01
                 Console.WriteLine("                              |     5. 메뉴로 갈래                         |");
                 Console.WriteLine("                              |____________________________________________|");
 
-                if (player.money<5000)
+                if (player.money<5000) // 최소 배팅금액 5000원이 없다면 메인메뉴로 돌아간다..
                 {
                     Console.WriteLine("                                        미안 넌 돈이 없네");
                     Thread.Sleep(3000);
@@ -305,7 +306,7 @@ namespace console_code_01
                             {
                                 Console.Write($"얼마를 거시겠습니까? (가진돈 : {player.money})");
                                 input = int.Parse(Console.ReadLine());
-                                if (player.money > input|| input>5000)
+                                if (player.money > input|| input>5000)//가진돈 보다 많이 거는것을 방지하기 위한 방어코드
                                 {
                                     h_1 += input;
                                     h_num = 1; 
@@ -373,7 +374,7 @@ namespace console_code_01
                             }                                                 
                             break;
                         case 5:
-                            Console.WriteLine("메뉴로 돌아갑니다.");
+                            Console.WriteLine("메뉴로 돌아갑니다.");//메인 메뉴로 가기위한 선택문
                             break;
               
                     }
@@ -390,7 +391,7 @@ namespace console_code_01
                 int spead_c = 0;
                 int spead_d = 0;
                
-                while (true)
+                while (true)//말이 달리는걸 표현하기 위한 반복문
                 {
 
                     Thread.Sleep(time_delay);
@@ -398,10 +399,10 @@ namespace console_code_01
 
                     
 
-                    double a = rand.NextDouble() * 2 + (0.5 + buff[buff_num[0]]);
+                    double a = rand.NextDouble() * 2 + (0.5 + buff[buff_num[0]]);//말들의 랜덤한 달리기 뒤에 배열로 버프가될 수도 디버프가 될수도 있음
                     double b = rand.NextDouble() * 2 + (0.5 + buff[buff_num[1]]);
                     double c = rand.NextDouble() * 2 + (0.5 + buff[buff_num[2]]);
-                    double d = rand.NextDouble() * 2 + (0.1 + buff[buff_num[3]]);
+                    double d = rand.NextDouble() * 2 + (0.5 + buff[buff_num[3]]);
 
                     spead_a = (int)(spead_a + a);
                     spead_b = (int)(spead_b + b);
@@ -412,14 +413,14 @@ namespace console_code_01
 
 
 
-                    Console.WriteLine($"                 1 번마 ㅁㅁㅁㅁ    {h_1} 원");
+                    Console.WriteLine($"                 1 번마 ㅁㅁㅁㅁ    {h_1} 원");//전광판
                     Console.WriteLine($"                 2 번마 ㅁㅁㅁㅁ    {h_2} 원");
                     Console.WriteLine($"                 3 번마 ㅁㅁㅁㅁ    {h_3} 원");
                     Console.WriteLine($"                 4 번마 ㅁㅁㅁㅁ    {h_4} 원");
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.WriteLine();
-                    Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");
+                    Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");//관객
                     Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");
                     Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");
                     Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");
@@ -427,7 +428,7 @@ namespace console_code_01
                     Console.WriteLine("        ||●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●●||");
                     Console.WriteLine(line);
 
-                    for (int i = 0; i < spead_a; i++)
+                    for (int i = 0; i < spead_a; i++)//1번마
                         Console.Write(" ");
                     Console.WriteLine("ㅁ1ㅁ");
 
@@ -455,8 +456,8 @@ namespace console_code_01
                     if(R==0)
                     {
                         R = 1;
-                        Thread.Sleep(3000);
-                        go.PlaySync();
+                        Thread.Sleep(3000);//3초 후 
+                        go.PlaySync();//총성과 함께 스타트
                     }
 
                     if (spead_a >= line_len || spead_b >= line_len || spead_c >= line_len || spead_d >= line_len)
@@ -485,7 +486,7 @@ namespace console_code_01
                         Console.WriteLine("{0}가 당첨 되었습니다.", numb);
 
 
-                        switch (numb)
+                        switch (numb)//당첨 말 확인 후 그 말에 돈을 걸었다면 상금을 지급
                         {
                             case "1번마":
                                 if(h_num ==1)
@@ -527,7 +528,7 @@ namespace console_code_01
                         h_3 = 0;
                         h_4 = 0;
                         
-                        Console.WriteLine("다시하려면 'r' 키를 누르시오.");
+                        Console.WriteLine("다시하려면 'r' 키를 누르시오.");//r을 입력하면 다시 배팅을 하고 경마에 참여
                         Console.WriteLine($"            남은돈 : {player.money}");
                         char_input = char.Parse(Console.ReadLine());
                         if (char_input == 'r')
@@ -536,7 +537,7 @@ namespace console_code_01
                             R = 0;
                             break;
                         }
-                        else
+                        else//다른 값이 입력되면 input에 5를 입력받고 게임을 나감
                         {
                             input = 5;
                             break;
@@ -563,13 +564,13 @@ namespace console_code_01
         //홀짝의 달인
         public void sniffling(Player player)
         {
-            int menyu = 0;
+            int menyu = 0; // 메뉴 나가기 위한것
             int sniffling_rand = 0;
             int bat = 0; 
             int combat;
             SoundPlayer ok = new SoundPlayer("C:\\Users\\ajtwj\\source\\repos\\console_code_01\\console_code_01\\Music\\결과.wav");//선택
 
-            while (menyu==0)
+            while (menyu==0)// 메뉴 값이 0이면 계속 홀짝을 한다.
             {
                 Console.Clear();
                 Console.WriteLine();
@@ -609,7 +610,7 @@ namespace console_code_01
                                 sniffling_rand = int.Parse(Console.ReadLine());
                                 if (player.money > sniffling_rand)
                                 {
-                                    if (sniffling_rand < 100)
+                                    if (sniffling_rand < 100)//최소 배팅금 100원
                                     {
                                         Console.WriteLine("양심적으로 100원 이상은 걸자..");
                                     }
@@ -621,7 +622,7 @@ namespace console_code_01
                                 }
                                 else
                                 {
-                                    Console.WriteLine("그정도로 돈이 없어..");
+                                    Console.WriteLine("그정도로 돈이 없어..");//가진돈 보다 배팅금을 많이 걸려고하면 방어하는 방어코드
                                 }
                             }
                             break;
@@ -647,7 +648,7 @@ namespace console_code_01
 
                 while (menyu==0)
                 {
-                    if(player.money< sniffling_rand)
+                    if(player.money< sniffling_rand)//배팅금보다 가진돈이 적다면 메뉴로
                     {
                         Console.WriteLine("돈이 없어 나가줘..");
                         Thread.Sleep(2000);
@@ -690,7 +691,7 @@ namespace console_code_01
                     {
                         break;
                     }
-
+                    //홀짝 흔드는거 표현
                     Console.Clear();
                     wnajr_H();
                     Thread.Sleep(100);
@@ -726,7 +727,7 @@ namespace console_code_01
                             F_h();
                             break;
                     }
-                    if(bat==1)
+                    if(bat==1)//금액 정산
                     {
                         if(combat == 1 || combat == 3)
                         {
@@ -758,23 +759,16 @@ namespace console_code_01
                         Console.WriteLine("아쉽게 됬네");
                     }
                     Console.WriteLine("다시하려면 아무키나 눌러");
-                    Console.ReadKey();
+                    Console.ReadKey();//계속진행
 
                 }
 
-                if (player.money < sniffling_rand)
+                if (player.money < sniffling_rand)//게임오버 확인
                 {
                     break;
                 }
 
             }
-
-
-
-
-
-
-
 
         }
         //주먹
@@ -811,6 +805,7 @@ namespace console_code_01
             Console.WriteLine("                               .   .     .   .   .,...:*!~ .   . . .        .");
 
         }
+        //주먹 흔들기
         public void wnajr_H1()
         {
 
