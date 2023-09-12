@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Media;
+using System.Media; // 효과음을 위해서 wav 파일 사용을 위한 헤더
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading;
+using System.Threading;// 슬립을 사용하기 위한 헤더
 
 namespace console_code_01
 {
     class Program
     {
+        //타이틀 도트
         public void Title()
         {
             Console.WriteLine("                                                                                                 ");
@@ -40,6 +41,7 @@ namespace console_code_01
             Console.WriteLine("                                                                                                 ");
             Console.WriteLine("                                 아무키나 눌러서 게임을 시작 해주세요.                                     ");
         }
+        //게임 오버도트
         public void game_over()
         {
             Console.WriteLine("                                                                             ");
