@@ -102,7 +102,7 @@ namespace console_code_01
                 Console.WriteLine("                           |_______________________________________________|");
                 int input = int.Parse(Console.ReadLine());
                 selet.PlaySync();
-                switch (4)
+                switch (input)
                 {
                     case 1:
                         g.Tempered(player);
