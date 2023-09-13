@@ -73,7 +73,7 @@ namespace console_code_01
             Game g = new Game();
             Player player = new Player();
             SoundPlayer selet = new SoundPlayer("C:\\Users\\ajtwj\\source\\repos\\console_code_01\\console_code_01\\Music\\mococo.wav");//선택
-            player.money = 1000;
+            player.money = 10000;
             p.Title();
             Console.ReadKey();
 
@@ -91,18 +91,18 @@ namespace console_code_01
                 Console.WriteLine("                            _______________________________________________ ");
                 Console.WriteLine("                           |                                               |");
                 Console.WriteLine("                           |                                               |");
-                Console.WriteLine("                           |                                               |");
                 Console.WriteLine("                           |                          1 . 강화의 달인      |");
                 Console.WriteLine("                           |                                               |");
-                Console.WriteLine("                           |      게임을 선택         2 . 경마의 달인      |");
-                Console.WriteLine("                           |                                               |");
+                Console.WriteLine("                           |                          2 . 경마의 달인      |");
+                Console.WriteLine("                           |      게임을 선택                              |");
                 Console.WriteLine("                           |                          3 . 홀짝의 달인      |");
                 Console.WriteLine("                           |                                               |");
+                Console.WriteLine("                           |                          4 . 31숫자게임       |");
                 Console.WriteLine("                           |                                               |");
                 Console.WriteLine("                           |_______________________________________________|");
                 int input = int.Parse(Console.ReadLine());
                 selet.PlaySync();
-                switch (input)
+                switch (4)
                 {
                     case 1:
                         g.Tempered(player);
@@ -113,8 +113,11 @@ namespace console_code_01
                     case 3:
                         g.sniffling(player);                        
                         break;
+                    case 4:
+                        g.number_G();
+                        break;
                     default:
-                        Console.WriteLine("1, 2, 3번만 가능해요");
+                        Console.WriteLine("1, 2, 3, 4번만 가능해요");
                         break;
                 }
 
